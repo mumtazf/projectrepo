@@ -4,6 +4,7 @@ I created this project to learn how to integrate LLM with a frontend interface. 
 
 It fetches information from online sources and then provides a summary of its recommendation.
 
+I wanted to learn something new and venture into an interest of mine so I decided to build a different project than the previous 3 projects from this course.
 
 ## Architecture Overview
 
