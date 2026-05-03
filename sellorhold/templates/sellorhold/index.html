@@ -1,0 +1,31 @@
+{% extends "sellorhold/base.html" %}
+
+{% block title %}Home - Sell or Hold{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Make Smart RSU Decisions</h1>
+        <p class="hero-subtitle">Get AI-powered analysis on whether to sell or hold your vested stock</p>
+        <a href="{% url 'display_form' %}" class="btn btn-primary btn-large">Start Analysis</a>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Powered</h3>
+        <p>Get intelligent recommendations based on market data and financial trends</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Data-Driven</h3>
+        <p>Analysis considers earnings calls, stock history, and key financial dates</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon\">⚡</div>
+        <h3>Fast Results</h3>
+        <p>Get your recommendation in seconds, not hours</p>
+    </div>
+</div>
+{% endblock %}

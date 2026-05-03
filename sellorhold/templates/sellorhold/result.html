@@ -1,0 +1,85 @@
+{% extends "sellorhold/base.html" %}
+
+{% block title %}{{ company }} - Analysis Results{% endblock %}
+
+{% block content %}
+<div class="results-wrapper">
+    <div class="results-container">
+        <div class="results-header">
+            <h1>Stock Analysis for <span class="company-name">{{ company }}</span></h1>
+            <p class="vest-info">Vest Date: <strong>{{ vest_date }}</strong></p>
+        </div>
+        
+        {% if success and ai_response_parsed %}
+        <div class="result-card success">
+            <div class="recommendation-box">
+                <div class="recommendation-label"><h2>Recommendation</h2></div>
+                <div class="recommendation-value {{ ai_response_parsed.recommendation|lower }}">
+                    {{ ai_response_parsed.recommendation }}
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Timeline</h3>
+                    <p>{{ ai_response_parsed.timeline }}</p>
+                </div>
+                <div class="info-item">
+                    <h3>Confidence</h3>
+                    <p><strong>{{ ai_response_parsed.confidence }}%</strong></p>
+                </div>
+            </div>
+            
+            <div class="analysis-section">
+                <h3>Analysis</h3>
+                <p>{{ ai_response_parsed.analysis }}</p>
+            </div>
+            
+            {% if ai_response_parsed.key_reasons %}
+            <div class="reasons-section">
+                <h3>Key Reasons</h3>
+                <ul>
+                    {% for reason in ai_response_parsed.key_reasons %}
+                    <li>{{ reason }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            {% if ai_response_parsed.risk_factors %}
+            <div class="risks-section">
+                <h3>Risk Factors</h3>
+                <ul>
+                    {% for risk in ai_response_parsed.risk_factors %}
+                    <li>{{ risk }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            {% if parsed.key_dates %}
+            <div ai_response_parsed="dates-section">
+                <h3>Important Dates</h3>
+                <div class="date-list">
+                    {% for date in ai_response_parsed.key_dates %}
+                    <span class="date-badge">{{ date }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <a href="{% url 'display_form' %}" class="btn btn-secondary">← Analyze Another Stock</a>
+        </div>
+        {% else %}
+        <div class="result-card error">
+            <div class="result-icon">⚠</div>
+            <h2>Analysis Failed</h2>
+            <div class="result-content">
+                Sorry - unable to complete the analysis. Please try again.
+            </div>
+            <a href="{% url 'display_form' %}" class="btn btn-secondary">← Try Again</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "sellorhold/base.html" %}
+
+{% block title %}Analyze Your stocks - Sell or Hold{% endblock %}
+
+{% block content %}
+<div class="form-wrapper">
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Sell or Hold Analyzer</h1>
+            <p class="form-subtitle">Get AI-powered insights on your stocks</p>
+        </div>
+        
+        <form action="{% url 'make_openai_call_for_analysis' %}" method="post" class="analysis-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="company_name">Company Name</label>
+                <input 
+                    type="text" 
+                    id="company_name" 
+                    name="company_name" 
+                    placeholder="e.g., Apple, Google, Meta"
+                    required
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="vest_date">Date</label>
+                <input 
+                    type="date" 
+                    id="vest_date" 
+                    name="vest_date"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Get Analysis</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
