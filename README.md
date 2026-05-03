@@ -7,6 +7,8 @@ It fetches information from online sources and then provides a summary of its re
 
 ## Architecture Overview
 
+> The AI provides confidence scoring on how sure it is about each recommendation
+
 ## Setup Instructions 
 
 1. Clone the repo 
@@ -27,5 +29,4 @@ Why you built it this way, and what trade-offs you made.
 ## Additional notes - What to do when: 
 
 1. runserver or the project is not starting
-
 - check if your postgres server is running or not. Postgres is a dependency so make sure it works properly before running your code 
